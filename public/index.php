@@ -57,7 +57,7 @@ $usuarioDAO = new UsuarioDAO($bd);
 // Si el usuario ya está validado
 if (isset($_SESSION['usuario'])) {
     // Si se solicita cerrar la sesión
-    if (isset($_REQUEST['botonlogout'])) {
+    if (filter_has_var(INPUT_GET, 'botonlogout')) {
         // Destruyo la sesión
         session_unset();
         session_destroy();
@@ -72,7 +72,7 @@ if (isset($_SESSION['usuario'])) {
 
     // Sino 
 } else {
-    if (isset($_REQUEST['botonproclogin'])) {
+    if (filter_has_var(INPUT_POST, 'botonproclogin')) {
         // Lee los valores del formulario
         $nombre = trim(filter_input(INPUT_POST, 'nombre', FILTER_UNSAFE_RAW));
         $clave = trim(filter_input(INPUT_POST, 'clave', FILTER_UNSAFE_RAW));

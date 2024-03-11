@@ -41,7 +41,7 @@ $blade = new BladeOne($views, $cache, BladeOne::MODE_DEBUG);
 if (isset($_SESSION['usuario'])) {
     $usuario = $_SESSION['usuario'];
 // Si se pide jugar con una letra
-    if (isset($_POST['botonenviarjugada'])) {
+    if (filter_has_var(INPUT_POST, 'botonenviarjugada')) {
 // Leo la letra
         $letra = trim(filter_input(INPUT_POST, 'letra', FILTER_UNSAFE_RAW));
         $partida = $_SESSION['partida'];
@@ -54,7 +54,7 @@ if (isset($_SESSION['usuario'])) {
         // Sigo jugando
         echo $blade->run("juego", compact('usuario', 'partida', 'error'));
 // Sino si se solicita una nueva partida
-    } elseif (isset($_REQUEST['botonnuevapartida'])) { // Se arranca una nueva partida
+    } elseif (filter_has_var(INPUT_GET, 'botonnuevapartida')) { // Se arranca una nueva partida
         $rutaFichero = $_ENV['RUTA_ALMACEN_PALABRAS'];
         $almacenPalabras = new AlmacenPalabrasFichero($rutaFichero);
         $partida = new Hangman($almacenPalabras, MAX_NUM_ERRORES);

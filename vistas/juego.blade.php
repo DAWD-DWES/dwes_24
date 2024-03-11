@@ -11,6 +11,10 @@
 </li>
 @endsection
 
+@section('usermenu')
+@parent
+@endsection
+
 @section('content')
 @php
 $imgsHangman = ['Hangman-0.png', 'Hangman-1.png', 'Hangman-2.png', 'Hangman-3.png', 'Hangman-4.png', 'Hangman-5.png'];

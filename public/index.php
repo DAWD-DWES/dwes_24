@@ -19,7 +19,7 @@
  *      Invoco la vista del formulario de login
  */
 require "../vendor/autoload.php";
-require "../error_handler.php";
+require "../src/error_handler.php";
 
 use eftec\bladeone\BladeOne;
 use Dotenv\Dotenv;
